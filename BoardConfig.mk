@@ -58,11 +58,10 @@ RECOVERY_FSTAB_VERSION := 2
     ueventd.te \
     wpa_supplicant.te
 
-# assert
-TARGET_OTA_ASSERT_DEVICE := m0,n7100,GT-N7100
 
 # added navbar ADDITIONAL_BUILD_PROPERTIES += \
 #    qemu.hw.mainkeys=0 
+
 # TWRP
 DEVICE_RESOLUTION := 720x1280
 
