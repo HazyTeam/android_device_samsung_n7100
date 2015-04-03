@@ -15,5 +15,5 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_n7100.mk \
-    $(LOCAL_DIR)/nameless_n7100.mk
+    $(LOCAL_DIR)/aosp_n7100.mk \
+    $(LOCAL_DIR)/hazy_n7100.mk
