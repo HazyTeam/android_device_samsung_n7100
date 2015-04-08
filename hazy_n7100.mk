@@ -40,9 +40,6 @@ $(call inherit-product, vendor/hazy/configs/common.mk)
 # This is where we'd set a backup provider if we had one
 $(call inherit-product, device/samsung/n7100/device.mk)
 
-# Inherit from our Hazy vendor product
-$(call inherit-product, vendor/hazy/device-partial.mk)
-
 # Discard inherited values and use our own instead.
 PRODUCT_NAME := hazy_n7100
 PRODUCT_DEVICE := n7100
