@@ -37,6 +37,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/hazy/configs/common.mk)
 
+#Configure Dalvik Heap
+$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+
 # This is where we'd set a backup provider if we had one
 $(call inherit-product, device/samsung/n7100/device.mk)
 
