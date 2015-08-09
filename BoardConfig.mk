@@ -22,31 +22,24 @@
 # RIL
 BOARD_PROVIDES_LIBRIL := true
 BOARD_MODEM_TYPE := xmm6262
-BOARD_RIL_CLASS := ../../../hardware/samsung/ril
+TARGET_SPECIFIC_HEADER_PATH := device/samsung/n7100/include
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/n7100/bluetooth
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/samsung/smdk4412
-TARGET_KERNEL_CONFIG := custom_n7100_defconfig
+TARGET_KERNEL_CONFIG := hazy_n7100_defconfig
+BOARD_KERNEL_CMDLINE := console=ttySAC2,115200 androidboot.selinux=permissive
 
-# assert
-TARGET_OTA_ASSERT_DEVICE := t03g,n7100,GT-N7100
-
-# own headers
-TARGET_SPECIFIC_HEADER_PATH := device/samsung/n7100/include
-
-# inherit from the proprietary version
--include vendor/samsung/n7100/BoardConfigVendor.mk
-
-# Recovery
-TARGET_RECOVERY_FSTAB := device/samsung/n7100/rootdir/fstab.smdk4x12
-RECOVERY_FSTAB_VERSION := 2
+# ril
+BOARD_RIL_CLASS := ../../../device/samsung/n7100/ril/telephony/java
 
 # Selinux
- BOARD_SEPOLICY_DIRS := \
-    device/samsung/n7100/selinux BOARD_SEPOLICY_UNION := \
+#BOARD_SEPOLICY_DIRS := \
+    device/samsung/n7100/selinux
+
+#BOARD_SEPOLICY_UNION := \
     device.te \
     domain.te \
     file.te \
@@ -56,18 +49,21 @@ RECOVERY_FSTAB_VERSION := 2
     rild.te \
     system.te \
     ueventd.te \
+    vold.te \
     wpa_supplicant.te
 
-
-# added navbar ADDITIONAL_BUILD_PROPERTIES += \
-#    qemu.hw.mainkeys=0 
-
-# TWRP
-DEVICE_RESOLUTION := 720x1280
-
-# Camera wrapper
-COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS 
-TARGET_PROVIDES_CAMERA_HAL := true
+# assert
+TARGET_OTA_ASSERT_DEVICE := t03g,n7100,GT-N7100
 
 # inherit from the proprietary version
 -include vendor/samsung/n7100/BoardConfigVendor.mk
+
+# Blobs
+COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
+
+# Recovery
+TARGET_RECOVERY_FSTAB := device/samsung/n7100/rootdir/fstab.smdk4x12
+RECOVERY_FSTAB_VERSION := 2
+
+# Camera wrapper
+TARGET_PROVIDES_CAMERA_HAL := true

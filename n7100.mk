@@ -38,9 +38,15 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/tiny_hw.xml:system/etc/sound/t03g
 
-# Camera
+# Camera Wrapper
 PRODUCT_PACKAGES += \
-    camera.smdk4x12
+    camera.smdk4x12 \
+    libcameraservice
+
+# Sensors
+PRODUCT_PACKAGES += \
+    sensorservice \
+    sensors.smdk4x12
 
 # Gps
 PRODUCT_COPY_FILES += \
@@ -51,10 +57,6 @@ PRODUCT_PACKAGES += \
     libsecril-client \
     libsecril-client-sap \
     SamsungServiceMode
-
-# Sensors
-PRODUCT_PACKAGES += \
-    sensors.smdk4x12
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -82,12 +84,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     com.android.nfc_extras
 
-$(call inherit-product, vendor/hazy/configs/nfc_enhanced.mk)
+$(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril_class=SamsungExynos4RIL \
-    mobiledata.interfaces=pdp0,gprs,ppp0,rmnet0,rmnet1 \
+    mobiledata.interfaces=pdp0,wlan0,gprs,ppp0 \
     ro.telephony.call_ring.multiple=false \
     ro.telephony.call_ring.delay=3000
 
